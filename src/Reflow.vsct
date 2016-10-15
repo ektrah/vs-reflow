@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidReflowPackage">
+    <Buttons>
+      <Button guid="guidReflowPackageCmdSet" id="ReflowId" priority="0x0100" type="Button">
+        <Parent guid="guidStdEditor" id="IDG_VS_EDITOR_ADVANCED_CMDS"/>
+        <Icon guid="guidImages" id="bmpIcon"/>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Reflow Selection</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\Images.png" usedList="bmpIcon"/>
+    </Bitmaps>
+  </Commands>
+
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidReflowPackageCmdSet" id="ReflowId" context="GUID_TextEditorFactory"/>
+  </VisibilityConstraints>
+
+  <KeyBindings>
+    <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q" mod2="Control"/>
+    <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q"/>
+  </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidReflowPackage" value="{8b12a0ce-bbf4-4f0a-a590-62f10160a171}"/>
+
+    <GuidSymbol name="guidReflowPackageCmdSet" value="{c0e01b22-96f5-4b93-ab8b-4e500cb2db5d}">
+      <IDSymbol name="ReflowId" value="0x0100"/>
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{904a541f-0c39-4857-9a6c-e84bb530a51a}" >
+      <IDSymbol name="bmpIcon" value="1"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
