@@ -11,7 +11,7 @@ namespace Reflow
         public const string Name = "Reflow";
         public const string Description = @"Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current line is reflowed.";
         public const string Language = "en-US";
-        public const string Version = "1.0";
+        public const string Version = "1.0.1";
         public const string Author = "Klaus Hartke";
         public const string Tags = "format, reflow";
     }

@@ -65,6 +65,16 @@ namespace Reflow
             int anchorLine, anchorColumn, endLine, endColumn;
             ErrorHandler.ThrowOnFailure(_view.GetSelection(out anchorLine, out anchorColumn, out endLine, out endColumn));
 
+            if (anchorLine > endLine || anchorLine == endLine && anchorColumn > endColumn)
+            {
+                int tempLine = anchorLine;
+                int tempColumn = anchorColumn;
+                anchorLine = endLine;
+                anchorColumn = endColumn;
+                endLine = tempLine;
+                endColumn = tempColumn;
+            }
+
             IVsTextLines textLines;
             ErrorHandler.ThrowOnFailure(_view.GetBuffer(out textLines));
 
