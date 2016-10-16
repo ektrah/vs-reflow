@@ -11,7 +11,7 @@
         <CommandFlag>DefaultInvisible</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Reflow Selection</ButtonText>
+          <ButtonText>Re&amp;flow Selection</ButtonText>
         </Strings>
       </Button>
     </Buttons>
