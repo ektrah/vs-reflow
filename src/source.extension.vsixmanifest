@@ -3,12 +3,12 @@
   <Metadata>
     <Identity Id="Reflow.2af72dbc-b8ef-438a-bc03-922e5acf446c" Version="1.0.1" Language="en-US" Publisher="Klaus Hartke" />
     <DisplayName>Reflow</DisplayName>
-    <Description>Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current line is reflowed.</Description>
+    <Description xml:space="preserve">Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current line is formatted.</Description>
     <MoreInfo>https://github.com/ektrah/vs-reflow</MoreInfo>
     <License>Resources\LICENSE</License>
     <Icon>Resources\Icon.png</Icon>
     <PreviewImage>Resources\Preview.png</PreviewImage>
-    <Tags>format, reflow</Tags>
+    <Tags>Editor, Text, format, reflow</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />
