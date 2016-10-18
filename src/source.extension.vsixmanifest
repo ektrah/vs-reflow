@@ -5,7 +5,7 @@
     <DisplayName>Reflow</DisplayName>
     <Description xml:space="preserve">Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current line is formatted.</Description>
     <MoreInfo>https://github.com/ektrah/vs-reflow</MoreInfo>
-    <License>Resources\LICENSE</License>
+    <License>Resources\License.txt</License>
     <Icon>Resources\Icon.png</Icon>
     <PreviewImage>Resources\Preview.png</PreviewImage>
     <Tags>Editor, Text, format, reflow</Tags>

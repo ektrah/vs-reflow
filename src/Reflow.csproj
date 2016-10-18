@@ -182,8 +182,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\LICENSE">
-      <Link>Resources\LICENSE</Link>
+    <Content Include="Resources\License.txt" >
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="source.extension.ico">
