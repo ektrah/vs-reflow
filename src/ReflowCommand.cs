@@ -62,6 +62,8 @@ namespace Reflow
 
         private void Reflow()
         {
+            int preferredLineLength = ReflowPackage.Options?.PreferredLineLength ?? ReflowOptionPage.DefaultLineLength;
+
             int anchorLine, anchorColumn, endLine, endColumn;
             ErrorHandler.ThrowOnFailure(_view.GetSelection(out anchorLine, out anchorColumn, out endLine, out endColumn));
 
@@ -152,7 +154,7 @@ namespace Reflow
                     sb.AppendLine();
                     size = 0;
                 }
-                else if (size + 1 + length > 80)
+                else if (size + 1 + length > preferredLineLength)
                 {
                     sb.AppendLine().Append(text, 0, indent).Append(text, pos, length);
                     size = indent + length;

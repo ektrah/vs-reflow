@@ -176,6 +176,9 @@
       <DependentUpon>Reflow.vsct</DependentUpon>
     </Compile>
     <Compile Include="ReflowCommand.cs" />
+    <Compile Include="ReflowOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ReflowPackage.cs" />
     <Compile Include="ReflowTextViewCreationListener.cs" />
     <Compile Include="source.extension.cs">

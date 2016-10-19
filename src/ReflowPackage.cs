@@ -10,5 +10,15 @@ namespace Reflow
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(PackageGuids.guidReflowPackageString)]
     [ProvideAutoLoad(VSConstants.VsEditorFactoryGuid.TextEditor_string)]
-    public sealed class ReflowPackage : Package { }
+    [ProvideOptionPage(typeof(ReflowOptionPage), "Environment", "Reflow", 0, 0, true, new[] { "text", "markdown", "reflow" })]
+    public sealed class ReflowPackage : Package
+    {
+        public static ReflowOptionPage Options { get; private set; }
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+            Options = (ReflowOptionPage)GetDialogPage(typeof(ReflowOptionPage));
+        }
+    }
 }
