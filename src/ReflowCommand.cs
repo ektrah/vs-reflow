@@ -80,8 +80,43 @@ namespace Reflow
 
             if (anchorLine == endLine && anchorColumn == endColumn)
             {
+                int lengthOfLine;
+                string lineText;
+                ErrorHandler.ThrowOnFailure(textLines.GetLengthOfLine(endLine, out lengthOfLine));
+                ErrorHandler.ThrowOnFailure(textLines.GetLineText(anchorLine, 0, endLine, lengthOfLine, out lineText));
+                if (string.IsNullOrWhiteSpace(lineText))
+                {
+                    return;
+                }
                 anchorColumn = 0;
-                ErrorHandler.ThrowOnFailure(textLines.GetLengthOfLine(endLine, out endColumn));
+                endColumn = lengthOfLine;
+
+                int lineCount;
+                ErrorHandler.ThrowOnFailure(textLines.GetLineCount(out lineCount));
+
+                while (anchorLine - 1 >= 0)
+                {
+                    ErrorHandler.ThrowOnFailure(textLines.GetLengthOfLine(anchorLine - 1, out lengthOfLine));
+                    ErrorHandler.ThrowOnFailure(textLines.GetLineText(anchorLine - 1, 0, anchorLine - 1, lengthOfLine, out lineText));
+                    if (string.IsNullOrWhiteSpace(lineText))
+                    {
+                        break;
+                    }
+                    anchorLine--;
+                    anchorColumn = 0;
+                }
+
+                while (endLine + 1 < lineCount)
+                {
+                    ErrorHandler.ThrowOnFailure(textLines.GetLengthOfLine(endLine + 1, out lengthOfLine));
+                    ErrorHandler.ThrowOnFailure(textLines.GetLineText(endLine + 1, 0, endLine + 1, lengthOfLine, out lineText));
+                    if (string.IsNullOrWhiteSpace(lineText))
+                    {
+                        break;
+                    }
+                    endLine++;
+                    endColumn = lengthOfLine;
+                }
             }
 
             string text;
