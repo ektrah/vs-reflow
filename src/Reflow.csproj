@@ -177,10 +177,10 @@
     </Compile>
     <Compile Include="ReflowCommand.cs" />
     <Compile Include="ReflowPackage.cs" />
+    <Compile Include="ReflowTextViewCreationListener.cs" />
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
-    <Compile Include="TextViewCreationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
