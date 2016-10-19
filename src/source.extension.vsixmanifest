@@ -3,7 +3,7 @@
   <Metadata>
     <Identity Id="Reflow.2af72dbc-b8ef-438a-bc03-922e5acf446c" Version="1.0.2" Language="en-US" Publisher="Klaus Hartke" />
     <DisplayName>Reflow</DisplayName>
-    <Description xml:space="preserve">Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current line is formatted.</Description>
+    <Description xml:space="preserve">Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current paragraph is formatted.</Description>
     <MoreInfo>https://github.com/ektrah/vs-reflow</MoreInfo>
     <License>Resources\License.txt</License>
     <Icon>Resources\Icon.png</Icon>

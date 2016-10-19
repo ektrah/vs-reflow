@@ -8,6 +8,6 @@ select one or more lines of text in the editor and select **Edit** >
 the words such that line breaks are removed from short lines and new line breaks
 are inserted before words that cause the line to exceed 80 characters. Initial
 white space is preserved and prepended to each line. If nothing is selected, the
-current line is formatted.
+current paragraph is formatted.
 
 [![Screenshot](Anim.gif)](https://github.com/ektrah/vs-reflow)
