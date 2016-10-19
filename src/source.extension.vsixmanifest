@@ -8,7 +8,7 @@
     <License>Resources\License.txt</License>
     <Icon>Resources\Icon.png</Icon>
     <PreviewImage>Resources\Preview.png</PreviewImage>
-    <Tags>Editor, Text, format, reflow</Tags>
+    <Tags>Editor, Text, markdown, format, reflow</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />

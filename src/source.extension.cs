@@ -13,6 +13,6 @@ namespace Reflow
         public const string Language = "en-US";
         public const string Version = "1.1";
         public const string Author = "Klaus Hartke";
-        public const string Tags = "Editor, Text, format, reflow";
+        public const string Tags = "Editor, Text, markdown, format, reflow";
     }
 }
