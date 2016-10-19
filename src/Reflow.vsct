@@ -5,13 +5,17 @@
 
   <Commands package="guidReflowPackage">
     <Buttons>
-      <Button guid="guidReflowPackageCmdSet" id="ReflowId" priority="0x0100" type="Button">
+      <Button guid="guidReflowPackageCmdSet" id="ReflowId" priority="0x2901" type="Button">
         <Parent guid="guidStdEditor" id="IDG_VS_EDITOR_ADVANCED_CMDS"/>
         <Icon guid="guidImages" id="bmpIcon"/>
         <CommandFlag>DefaultInvisible</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
         <Strings>
           <ButtonText>Re&amp;flow Selection</ButtonText>
+          <MenuText>Re&amp;flow Selection</MenuText>
+          <ToolTipText>Reflow the currently selected text.</ToolTipText>
+          <CommandName>Selection Reflow</CommandName>
         </Strings>
       </Button>
     </Buttons>
