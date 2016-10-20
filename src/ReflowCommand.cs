@@ -3,6 +3,7 @@ using System.Text;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Text.Editor;
+using Microsoft.VisualStudio.Text.Editor.OptionsExtensionMethods;
 
 namespace Reflow
 {
@@ -113,9 +114,12 @@ namespace Reflow
 
                 var text = snapshot.GetText(start, end - start);
 
+                var tabSize = _view.Options.GetTabSize();
+                var indentWidth = 0;
                 var indent = 0;
                 while (indent < text.Length && char.IsWhiteSpace(text, indent))
                 {
+                    indentWidth += (text[indent] == '\t') ? tabSize - (indentWidth % tabSize) : 1;
                     indent++;
                 }
 
@@ -136,7 +140,7 @@ namespace Reflow
                     if (size == 0)
                     {
                         sb.Append(text, 0, indent).Append(text, pos, length);
-                        size = indent + length;
+                        size = indentWidth + length;
                     }
                     else if (length == 0)
                     {
@@ -146,7 +150,7 @@ namespace Reflow
                     else if (size + 1 + length > preferredLineLength)
                     {
                         sb.AppendLine().Append(text, 0, indent).Append(text, pos, length);
-                        size = indent + length;
+                        size = indentWidth + length;
                     }
                     else
                     {
