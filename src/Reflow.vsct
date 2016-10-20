@@ -5,7 +5,7 @@
 
   <Commands package="guidReflowPackage">
     <Buttons>
-      <Button guid="guidReflowPackageCmdSet" id="ReflowId" priority="0x2901" type="Button">
+      <Button guid="guidReflowPackageCmdSet" id="cmdidReflow" priority="0x2901" type="Button">
         <Parent guid="guidStdEditor" id="IDG_VS_EDITOR_ADVANCED_CMDS"/>
         <Icon guid="guidImages" id="bmpIcon"/>
         <CommandFlag>DefaultInvisible</CommandFlag>
@@ -26,16 +26,16 @@
   </Commands>
 
   <KeyBindings>
-    <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q" mod2="Control"/>
-    <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q"/>
-    <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="K" mod1="Control" key2="Q" mod2="Control"/>
+    <KeyBinding guid="guidReflowPackageCmdSet" id="cmdidReflow" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q" mod2="Control"/>
+    <KeyBinding guid="guidReflowPackageCmdSet" id="cmdidReflow" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q"/>
+    <KeyBinding guid="guidReflowPackageCmdSet" id="cmdidReflow" editor="GUID_TextEditorFactory" key1="K" mod1="Control" key2="Q" mod2="Control"/>
   </KeyBindings>
 
   <Symbols>
     <GuidSymbol name="guidReflowPackage" value="{8b12a0ce-bbf4-4f0a-a590-62f10160a171}"/>
 
     <GuidSymbol name="guidReflowPackageCmdSet" value="{c0e01b22-96f5-4b93-ab8b-4e500cb2db5d}">
-      <IDSymbol name="ReflowId" value="0x0100"/>
+      <IDSymbol name="cmdidReflow" value="0x0100"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{904a541f-0c39-4857-9a6c-e84bb530a51a}" >

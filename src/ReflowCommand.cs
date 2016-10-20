@@ -26,7 +26,7 @@ namespace Reflow
         {
             if (pguidCmdGroup == PackageGuids.guidReflowPackageCmdSet)
             {
-                if (nCmdID != PackageIds.ReflowId)
+                if (nCmdID != PackageIds.cmdidReflow)
                 {
                     return (int)Constants.OLECMDERR_E_NOTSUPPORTED;
                 }
@@ -48,7 +48,7 @@ namespace Reflow
             {
                 for (int i = 0; i < cCmds; i++)
                 {
-                    if (prgCmds[i].cmdID != PackageIds.ReflowId)
+                    if (prgCmds[i].cmdID != PackageIds.cmdidReflow)
                     {
                         return (int)Constants.OLECMDERR_E_NOTSUPPORTED;
                     }

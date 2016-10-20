@@ -24,7 +24,7 @@ namespace Reflow
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int ReflowId = 0x0100;
+        public const int cmdidReflow = 0x0100;
         public const int bmpIcon = 0x0001;
     }
 }
