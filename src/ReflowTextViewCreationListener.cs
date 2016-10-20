@@ -10,7 +10,7 @@ namespace Reflow
 {
     [Export(typeof(IVsTextViewCreationListener))]
     [ContentType("text")]
-    [TextViewRole(PredefinedTextViewRoles.Editable)]
+    [TextViewRole(PredefinedTextViewRoles.Document)]
     public sealed class ReflowTextViewCreationListener : IVsTextViewCreationListener
     {
         public void VsTextViewCreated(IVsTextView textViewAdapter)
