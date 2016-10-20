@@ -80,8 +80,37 @@ namespace Reflow
                 if (start == end)
                 {
                     var line = snapshot.GetLineFromPosition(start);
+                    if (string.IsNullOrWhiteSpace(line.GetText()))
+                    {
+                        edit.Cancel();
+                        return;
+                    }
                     start = line.Extent.Start;
                     end = line.Extent.End;
+
+                    var startLine = line.LineNumber;
+                    while (startLine - 1 >= 0)
+                    {
+                        line = snapshot.GetLineFromLineNumber(startLine - 1);
+                        if (string.IsNullOrWhiteSpace(line.GetText()))
+                        {
+                            break;
+                        }
+                        startLine--;
+                        start = line.Extent.Start;
+                    }
+
+                    var endLine = line.LineNumber;
+                    while (endLine + 1 < snapshot.LineCount)
+                    {
+                        line = snapshot.GetLineFromLineNumber(endLine + 1);
+                        if (string.IsNullOrWhiteSpace(line.GetText()))
+                        {
+                            break;
+                        }
+                        endLine++;
+                        end = line.Extent.End;
+                    }
                 }
 
                 var text = snapshot.GetText(start, end - start);
@@ -130,15 +159,14 @@ namespace Reflow
                 }
 
                 string newText = sb.ToString();
-                if (newText != text)
-                {
-                    edit.Replace(start, end - start, newText);
-                    edit.Apply();
-                }
-                else
+                if (newText == text)
                 {
                     edit.Cancel();
+                    return;
                 }
+
+                edit.Replace(start, end - start, newText);
+                edit.Apply();
             }
         }
     }
