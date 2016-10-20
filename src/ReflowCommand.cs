@@ -24,8 +24,12 @@ namespace Reflow
 
         public int Exec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
         {
-            if (pguidCmdGroup == PackageGuids.guidReflowPackageCmdSet && nCmdID == PackageIds.ReflowId)
+            if (pguidCmdGroup == PackageGuids.guidReflowPackageCmdSet)
             {
+                if (nCmdID != PackageIds.ReflowId)
+                {
+                    return (int)Constants.OLECMDERR_E_NOTSUPPORTED;
+                }
                 Reflow();
                 return VSConstants.S_OK;
             }
@@ -44,10 +48,11 @@ namespace Reflow
             {
                 for (int i = 0; i < cCmds; i++)
                 {
-                    if (prgCmds[i].cmdID == PackageIds.ReflowId)
+                    if (prgCmds[i].cmdID != PackageIds.ReflowId)
                     {
-                        prgCmds[i].cmdf |= (uint)(OLECMDF.OLECMDF_ENABLED | OLECMDF.OLECMDF_SUPPORTED);
+                        return (int)Constants.OLECMDERR_E_NOTSUPPORTED;
                     }
+                    prgCmds[i].cmdf |= (uint)(OLECMDF.OLECMDF_ENABLED | OLECMDF.OLECMDF_SUPPORTED);
                 }
                 return VSConstants.S_OK;
             }
