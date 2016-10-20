@@ -25,10 +25,6 @@
     </Bitmaps>
   </Commands>
 
-  <VisibilityConstraints>
-    <VisibilityItem guid="guidReflowPackageCmdSet" id="ReflowId" context="GUID_TextEditorFactory"/>
-  </VisibilityConstraints>
-
   <KeyBindings>
     <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q" mod2="Control"/>
     <KeyBinding guid="guidReflowPackageCmdSet" id="ReflowId" editor="GUID_TextEditorFactory" key1="E" mod1="Control" key2="Q"/>
