@@ -86,8 +86,8 @@ namespace Reflow
                     }
                     start = line.Extent.Start;
                     end = line.Extent.End;
-
                     var startLine = line.LineNumber;
+                    var endLine = line.LineNumber;
                     while (startLine - 1 >= 0)
                     {
                         line = snapshot.GetLineFromLineNumber(startLine - 1);
@@ -98,8 +98,6 @@ namespace Reflow
                         startLine--;
                         start = line.Extent.Start;
                     }
-
-                    var endLine = line.LineNumber;
                     while (endLine + 1 < snapshot.LineCount)
                     {
                         line = snapshot.GetLineFromLineNumber(endLine + 1);
@@ -124,7 +122,7 @@ namespace Reflow
                 }
 
                 var sb = new StringBuilder();
-                var size = 0;
+                var lineSize = 0;
                 var pos = 0;
                 while (pos < text.Length)
                 {
@@ -137,30 +135,30 @@ namespace Reflow
                     {
                         length++;
                     }
-                    if (size == 0)
+                    if (lineSize == 0)
                     {
                         sb.Append(text, 0, indent).Append(text, pos, length);
-                        size = indentWidth + length;
+                        lineSize = indentWidth + length;
                     }
                     else if (length == 0)
                     {
                         sb.AppendLine();
-                        size = 0;
+                        lineSize = 0;
                     }
-                    else if (size + 1 + length > preferredLineLength)
+                    else if (lineSize + 1 + length > preferredLineLength)
                     {
                         sb.AppendLine().Append(text, 0, indent).Append(text, pos, length);
-                        size = indentWidth + length;
+                        lineSize = indentWidth + length;
                     }
                     else
                     {
                         sb.Append(' ').Append(text, pos, length);
-                        size += 1 + length;
+                        lineSize += 1 + length;
                     }
                     pos += length;
                 }
 
-                string newText = sb.ToString();
+                var newText = sb.ToString();
                 if (newText == text)
                 {
                     edit.Cancel();
