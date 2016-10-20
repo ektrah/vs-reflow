@@ -68,6 +68,78 @@ namespace Reflow
 
         private void Reflow()
         {
+            var preferredLineLength = ReflowPackage.Options?.PreferredLineLength ?? ReflowOptionPage.DefaultLineLength;
+
+            using (var edit = _view.TextBuffer.CreateEdit())
+            {
+                var snapshot = edit.Snapshot;
+
+                var start = _view.Selection.Start.Position.Position;
+                var end = _view.Selection.End.Position.Position;
+
+                if (start == end)
+                {
+                    var line = snapshot.GetLineFromPosition(start);
+                    start = line.Extent.Start;
+                    end = line.Extent.End;
+                }
+
+                var text = snapshot.GetText(start, end - start);
+
+                var indent = 0;
+                while (indent < text.Length && char.IsWhiteSpace(text, indent))
+                {
+                    indent++;
+                }
+
+                var sb = new StringBuilder();
+                var size = 0;
+                var pos = 0;
+                while (pos < text.Length)
+                {
+                    while (pos < text.Length && char.IsWhiteSpace(text, pos))
+                    {
+                        pos++;
+                    }
+                    var length = 0;
+                    while (pos + length < text.Length && !char.IsWhiteSpace(text, pos + length))
+                    {
+                        length++;
+                    }
+                    if (size == 0)
+                    {
+                        sb.Append(text, 0, indent).Append(text, pos, length);
+                        size = indent + length;
+                    }
+                    else if (length == 0)
+                    {
+                        sb.AppendLine();
+                        size = 0;
+                    }
+                    else if (size + 1 + length > preferredLineLength)
+                    {
+                        sb.AppendLine().Append(text, 0, indent).Append(text, pos, length);
+                        size = indent + length;
+                    }
+                    else
+                    {
+                        sb.Append(' ').Append(text, pos, length);
+                        size += 1 + length;
+                    }
+                    pos += length;
+                }
+
+                string newText = sb.ToString();
+                if (newText != text)
+                {
+                    edit.Replace(start, end - start, newText);
+                    edit.Apply();
+                }
+                else
+                {
+                    edit.Cancel();
+                }
+            }
         }
     }
 }
