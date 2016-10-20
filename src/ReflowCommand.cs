@@ -3,15 +3,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
+using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 
 namespace Reflow
 {
     internal sealed class ReflowCommand : IOleCommandTarget
     {
-        private readonly IVsTextView _view;
+        private readonly IWpfTextView _view;
 
-        public ReflowCommand(IVsTextView view)
+        public ReflowCommand(IWpfTextView view)
         {
             _view = view;
         }

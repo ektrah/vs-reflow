@@ -24,7 +24,7 @@ namespace Reflow
         public void TextViewCreated(IWpfTextView textView)
         {
             IVsTextView textViewAdapter = _adapterFactory.GetViewAdapter(textView);
-            ReflowCommand command = new ReflowCommand(textViewAdapter);
+            ReflowCommand command = new ReflowCommand(textView);
             IOleCommandTarget next;
             ErrorHandler.ThrowOnFailure(textViewAdapter.AddCommandFilter(command, out next));
             command.Next = next;
