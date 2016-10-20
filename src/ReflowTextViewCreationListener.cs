@@ -8,13 +8,22 @@ using Microsoft.VisualStudio.Utilities;
 
 namespace Reflow
 {
-    [Export(typeof(IVsTextViewCreationListener))]
+    [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("text")]
     [TextViewRole(PredefinedTextViewRoles.Document)]
-    public sealed class ReflowTextViewCreationListener : IVsTextViewCreationListener
+    public sealed class ReflowTextViewCreationListener : IWpfTextViewCreationListener
     {
-        public void VsTextViewCreated(IVsTextView textViewAdapter)
+        private readonly IVsEditorAdaptersFactoryService _adapterFactory;
+
+        [ImportingConstructor]
+        public ReflowTextViewCreationListener(IVsEditorAdaptersFactoryService adapterFactory)
         {
+            _adapterFactory = adapterFactory;
+        }
+
+        public void TextViewCreated(IWpfTextView textView)
+        {
+            IVsTextView textViewAdapter = _adapterFactory.GetViewAdapter(textView);
             ReflowCommand command = new ReflowCommand(textViewAdapter);
             IOleCommandTarget next;
             ErrorHandler.ThrowOnFailure(textViewAdapter.AddCommandFilter(command, out next));
