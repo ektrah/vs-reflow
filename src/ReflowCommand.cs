@@ -125,7 +125,7 @@ namespace Reflow
                 var lineEnding = (firstLine.LineBreakLength != 0) ? firstLine.GetLineBreakText() : _view.Options.GetNewLineCharacter();
 
                 var sb = new StringBuilder();
-                var lineSize = 0;
+                var lineLength = 0;
                 var pos = 0;
                 while (pos < text.Length)
                 {
@@ -138,25 +138,25 @@ namespace Reflow
                     {
                         length++;
                     }
-                    if (lineSize == 0)
+                    if (lineLength == 0)
                     {
                         sb.Append(text, 0, indent).Append(text, pos, length);
-                        lineSize = indentWidth + length;
+                        lineLength = indentWidth + length;
                     }
                     else if (length == 0)
                     {
                         sb.Append(lineEnding);
-                        lineSize = 0;
+                        lineLength = 0;
                     }
-                    else if (lineSize + 1 + length > preferredLineLength)
+                    else if (lineLength + 1 + length > preferredLineLength)
                     {
                         sb.Append(lineEnding).Append(text, 0, indent).Append(text, pos, length);
-                        lineSize = indentWidth + length;
+                        lineLength = indentWidth + length;
                     }
                     else
                     {
                         sb.Append(' ').Append(text, pos, length);
-                        lineSize += 1 + length;
+                        lineLength += 1 + length;
                     }
                     pos += length;
                 }
