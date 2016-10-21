@@ -112,6 +112,9 @@ namespace Reflow
 
                 var text = snapshot.GetText(start, end - start);
 
+                var firstLine = snapshot.GetLineFromPosition(0);
+                var lineEnding = (firstLine.LineBreakLength != 0) ? firstLine.GetLineBreakText() : _view.Options.GetNewLineCharacter();
+
                 var tabSize = _view.Options.GetTabSize();
                 var indentWidth = 0;
                 var indent = 0;
@@ -126,9 +129,6 @@ namespace Reflow
                 {
                     textLength--;
                 }
-
-                var firstLine = snapshot.GetLineFromPosition(0);
-                var lineEnding = (firstLine.LineBreakLength != 0) ? firstLine.GetLineBreakText() : _view.Options.GetNewLineCharacter();
 
                 var sb = new StringBuilder();
                 var lineLength = 0;
