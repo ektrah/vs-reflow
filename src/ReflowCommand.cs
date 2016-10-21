@@ -121,20 +121,26 @@ namespace Reflow
                     indent++;
                 }
 
+                var textLength = text.Length;
+                while (textLength - 1 >= indent && char.IsWhiteSpace(text, textLength - 1))
+                {
+                    textLength--;
+                }
+
                 var firstLine = snapshot.GetLineFromPosition(0);
                 var lineEnding = (firstLine.LineBreakLength != 0) ? firstLine.GetLineBreakText() : _view.Options.GetNewLineCharacter();
 
                 var sb = new StringBuilder();
                 var lineLength = 0;
-                var pos = 0;
-                while (pos < text.Length)
+                var pos = indent;
+                while (pos < textLength)
                 {
-                    while (pos < text.Length && char.IsWhiteSpace(text, pos))
+                    while (pos < textLength && char.IsWhiteSpace(text, pos))
                     {
                         pos++;
                     }
                     var length = 0;
-                    while (pos + length < text.Length && !char.IsWhiteSpace(text, pos + length))
+                    while (pos + length < textLength && !char.IsWhiteSpace(text, pos + length))
                     {
                         length++;
                     }
@@ -142,11 +148,6 @@ namespace Reflow
                     {
                         sb.Append(text, 0, indent).Append(text, pos, length);
                         lineLength = indentWidth + length;
-                    }
-                    else if (length == 0)
-                    {
-                        sb.Append(lineEnding);
-                        lineLength = 0;
                     }
                     else if (lineLength + 1 + length > preferredLineLength)
                     {
@@ -160,6 +161,7 @@ namespace Reflow
                     }
                     pos += length;
                 }
+                sb.Append(text, textLength, text.Length - textLength);
 
                 var newText = sb.ToString();
                 if (newText == text)
