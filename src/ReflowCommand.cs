@@ -117,6 +117,18 @@ namespace Reflow
 
                 var tabSize = _view.Options.GetTabSize();
                 var indentWidth = 0;
+                var startLineStart = snapshot.GetLineFromPosition(start).Start.Position;
+                var preamble = new char[start - startLineStart];
+                snapshot.CopyTo(startLineStart, preamble, 0, preamble.Length);
+                for (int i = 0; i < preamble.Length; i++)
+                {
+                    if (!char.IsWhiteSpace(preamble[i]))
+                    {
+                        preamble[i] = ' ';
+                    }
+                    indentWidth += (preamble[i] == '\t') ? tabSize - (indentWidth % tabSize) : 1;
+                }
+
                 var indent = 0;
                 while (indent < text.Length && char.IsWhiteSpace(text, indent))
                 {
@@ -133,6 +145,17 @@ namespace Reflow
                 var sb = new StringBuilder();
                 var lineLength = 0;
                 var pos = indent;
+                if (pos < textLength)
+                {
+                    var length = 0;
+                    while (pos + length < textLength && !char.IsWhiteSpace(text, pos + length))
+                    {
+                        length++;
+                    }
+                    sb.Append(text, 0, indent).Append(text, pos, length);
+                    lineLength = indentWidth + length;
+                    pos += length;
+                }
                 while (pos < textLength)
                 {
                     while (pos < textLength && char.IsWhiteSpace(text, pos))
@@ -144,14 +167,9 @@ namespace Reflow
                     {
                         length++;
                     }
-                    if (lineLength == 0)
+                    if (lineLength + 1 + length > preferredLineLength)
                     {
-                        sb.Append(text, 0, indent).Append(text, pos, length);
-                        lineLength = indentWidth + length;
-                    }
-                    else if (lineLength + 1 + length > preferredLineLength)
-                    {
-                        sb.Append(lineEnding).Append(text, 0, indent).Append(text, pos, length);
+                        sb.Append(lineEnding).Append(preamble, 0, preamble.Length).Append(text, 0, indent).Append(text, pos, length);
                         lineLength = indentWidth + length;
                     }
                     else
