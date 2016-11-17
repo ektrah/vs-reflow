@@ -11,4 +11,4 @@ current paragraph is formatted.
 The preferred line length can be changed under **Tools** > **Options** >
 **Environment** > **Reflow**.
 
-[Available from the VS Gallery](https://visualstudiogallery.msdn.microsoft.com/00b12458-e1e6-41e6-9cbe-1ac7ba4edb40)
+[Available from the VS Marketplace](https://marketplace.visualstudio.com/items?itemName=KlausHartke.Reflow)
