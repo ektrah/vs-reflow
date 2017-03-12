@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26020.0
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflow", "src\Reflow.csproj", "{E01E82C2-5EA7-4E32-92B7-0EB080E774EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflow", "src\Reflow.csproj", "{1CB4D359-3886-400D-92F8-0B9215B154D1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B192275A-CBED-4B3B-9E1D-F4C9C5289729}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CCEBCDE-7FFC-4A60-9FA7-31AC3C0EBD1A}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
@@ -19,10 +19,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E01E82C2-5EA7-4E32-92B7-0EB080E774EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E01E82C2-5EA7-4E32-92B7-0EB080E774EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E01E82C2-5EA7-4E32-92B7-0EB080E774EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E01E82C2-5EA7-4E32-92B7-0EB080E774EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB4D359-3886-400D-92F8-0B9215B154D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB4D359-3886-400D-92F8-0B9215B154D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB4D359-3886-400D-92F8-0B9215B154D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB4D359-3886-400D-92F8-0B9215B154D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
