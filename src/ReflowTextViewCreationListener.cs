@@ -23,14 +23,13 @@ namespace Reflow
 
         public void TextViewCreated(IWpfTextView textView)
         {
-            if (_adapterFactory == null || textView == null)
-                return;
-
             IVsTextView textViewAdapter = _adapterFactory.GetViewAdapter(textView);
-            ReflowCommand command = new ReflowCommand(textView);
-            IOleCommandTarget next;
-            ErrorHandler.ThrowOnFailure(textViewAdapter.AddCommandFilter(command, out next));
-            command.Next = next;
+            if (textViewAdapter != null)
+            {
+                ReflowCommand command = new ReflowCommand(textView);
+                ErrorHandler.ThrowOnFailure(textViewAdapter.AddCommandFilter(command, out IOleCommandTarget next));
+                command.Next = next;
+            }
         }
     }
 }
