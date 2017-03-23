@@ -23,6 +23,9 @@ namespace Reflow
 
         public void TextViewCreated(IWpfTextView textView)
         {
+            if (_adapterFactory == null || textView == null)
+                return;
+
             IVsTextView textViewAdapter = _adapterFactory.GetViewAdapter(textView);
             ReflowCommand command = new ReflowCommand(textView);
             IOleCommandTarget next;

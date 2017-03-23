@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Reflow.2af72dbc-b8ef-438a-bc03-922e5acf446c" Version="1.3.2" Language="en-US" Publisher="Klaus Hartke" />
+    <Identity Id="Reflow.2af72dbc-b8ef-438a-bc03-922e5acf446c" Version="1.3.3" Language="en-US" Publisher="Klaus Hartke" />
     <DisplayName>Reflow</DisplayName>
     <Description xml:space="preserve">Formats the current selection to have lines no longer than 80 characters. If nothing is selected, the current paragraph is reflowed.</Description>
     <MoreInfo>https://github.com/ektrah/vs-reflow</MoreInfo>
