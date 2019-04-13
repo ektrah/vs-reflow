@@ -17,7 +17,11 @@ namespace Reflow
 
         protected override async System.Threading.Tasks.Task InitializeAsync(System.Threading.CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            await base.InitializeAsync(cancellationToken, progress);
+            await JoinableTaskFactory.RunAsync(VsTaskRunContext.UIThreadNormalPriority, InitializeDialogPageAsync);
+        }
+
+        private async System.Threading.Tasks.Task InitializeDialogPageAsync()
+        {
             await JoinableTaskFactory.SwitchToMainThreadAsync();
             Options = (ReflowOptionPage)GetDialogPage(typeof(ReflowOptionPage));
         }
